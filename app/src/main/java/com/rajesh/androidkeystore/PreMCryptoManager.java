@@ -34,6 +34,7 @@ import javax.security.auth.x500.X500Principal;
  * Manager which is used to encrypt/decrypt data for API level 18  and less marshmallow
  */
 public class PreMCryptoManager extends CryptoManager {
+
     public PreMCryptoManager(Context context) {
         super(context);
     }
@@ -57,7 +58,7 @@ public class PreMCryptoManager extends CryptoManager {
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             CipherOutputStream cipherOutputStream = new CipherOutputStream(
                     outputStream, mCipher);
-            cipherOutputStream.write(data.getBytes("UTF-8"));
+            cipherOutputStream.write(data.getBytes(UTF_8));
             cipherOutputStream.close();
             return Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT);
         } catch (UnsupportedEncodingException e) {
@@ -85,7 +86,7 @@ public class PreMCryptoManager extends CryptoManager {
             for (int i = 0; i < bytes.length; i++) {
                 bytes[i] = values.get(i).byteValue();
             }
-            return new String(bytes, 0, bytes.length, "UTF-8");
+            return new String(bytes, 0, bytes.length, UTF_8);
         } catch (UnsupportedEncodingException e) {
             throw new RuntimeException("Unsupported Encoding exception");
         } catch (IOException e) {
@@ -97,7 +98,6 @@ public class PreMCryptoManager extends CryptoManager {
     @Override
     public void createKeyPair() {
         try {
-            // Create new key if needed
             if (!mKeyStore.containsAlias(keyAlias)) {
                 Calendar start = Calendar.getInstance();
                 Calendar end = Calendar.getInstance();

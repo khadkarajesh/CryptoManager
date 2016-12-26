@@ -29,6 +29,8 @@ public abstract class CryptoManager implements ICryptoManager {
     protected static final String ANDROID_KEY_STORE = "AndroidKeyStore";
     protected String keyAlias;
     protected static final String RSA_ECB_PKCS1_PADDING = "RSA/ECB/PKCS1Padding";
+    protected static final String RSA = "RSA";
+    protected static final String UTF_8 = "UTF8";
 
     public CryptoManager(Context context) {
         this.mContext = context;

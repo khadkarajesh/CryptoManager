@@ -70,7 +70,7 @@ public class PostMCryptoManager extends CryptoManager {
         initCipher(Cipher.DECRYPT_MODE);
         try {
             byte[] bytes = Base64.decode(data, Base64.NO_WRAP);
-            return new String(mCipher.doFinal(bytes), "UTF8");
+            return new String(mCipher.doFinal(bytes), UTF_8);
         } catch (IllegalBlockSizeException | BadPaddingException exception) {
             throw new RuntimeException("Failed to decrypt password", exception);
         } catch (UnsupportedEncodingException e) {
@@ -89,7 +89,7 @@ public class PostMCryptoManager extends CryptoManager {
 
     private KeyPairGenerator getKeyPairGenerator() {
         try {
-            return KeyPairGenerator.getInstance("RSA", "AndroidKeyStore");
+            return KeyPairGenerator.getInstance(RSA, ANDROID_KEY_STORE);
         } catch (NoSuchAlgorithmException | NoSuchProviderException exception) {
             throw new RuntimeException("Failed to get an instance of KeyPairGenerator", exception);
         }
@@ -122,11 +122,10 @@ public class PostMCryptoManager extends CryptoManager {
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    public boolean initCipher(int opmode) {
+    public boolean initCipher(int mode) {
         try {
             mKeyStore.load(null);
-
-            if (opmode == Cipher.ENCRYPT_MODE) {
+            if (mode == Cipher.ENCRYPT_MODE) {
                 PublicKey key = mKeyStore.getCertificate(keyAlias).getPublicKey();
 
                 PublicKey unrestricted = KeyFactory.getInstance(key.getAlgorithm())
@@ -134,10 +133,10 @@ public class PostMCryptoManager extends CryptoManager {
 
                 OAEPParameterSpec spec = new OAEPParameterSpec(
                         SHA_256, MGF_1, MGF1ParameterSpec.SHA1, PSource.PSpecified.DEFAULT);
-                mCipher.init(opmode, unrestricted, spec);
+                mCipher.init(mode, unrestricted, spec);
             } else {
                 PrivateKey key = (PrivateKey) mKeyStore.getKey(keyAlias, null);
-                mCipher.init(opmode, key);
+                mCipher.init(mode, key);
             }
 
             return true;
