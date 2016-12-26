@@ -11,20 +11,28 @@ import java.security.cert.CertificateException;
 
 import javax.crypto.Cipher;
 
+/**
+ * Direct known classes {@link PreMCryptoManager} {@link PostMCryptoManager} {@link DefaultCryptoManager}
+ *
+ * @see PostMCryptoManager
+ * @see PreMCryptoManager
+ * @see DefaultCryptoManager
+ */
 public abstract class CryptoManager implements ICryptoManager {
-    public KeyStore mKeyStore;
-    public Cipher mCipher;
-    public Context mContext;
-    public int mode = -1;
-    public static final String SHA_256 = "SHA-256";
-    public static final String MGF_1 = "MGF1";
-    public static final String RSA_ECB_OAEPWITH_SHA_256_AND_MGF1_PADDING = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding";
-    public static final String ANDROID_KEY_STORE = "AndroidKeyStore";
-    public static final String KEY_ALIAS = "hello";
-    public static final String RSA_ECB_PKCS1_PADDING = "RSA/ECB/PKCS1Padding";
+    protected KeyStore mKeyStore;
+    protected Cipher mCipher;
+    protected Context mContext;
+    protected int mode = -1;
+    protected static final String SHA_256 = "SHA-256";
+    protected static final String MGF_1 = "MGF1";
+    protected static final String RSA_ECB_OAEPWITH_SHA_256_AND_MGF1_PADDING = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding";
+    protected static final String ANDROID_KEY_STORE = "AndroidKeyStore";
+    protected String keyAlias;
+    protected static final String RSA_ECB_PKCS1_PADDING = "RSA/ECB/PKCS1Padding";
 
     public CryptoManager(Context context) {
         this.mContext = context;
+        keyAlias = context.getString(R.string.key_alias);
         init();
     }
 

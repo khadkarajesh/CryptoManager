@@ -108,7 +108,7 @@ public class PostMCryptoManager extends CryptoManager {
     public void createKeyPair() {
         try {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                mKeyPairGenerator.initialize(new KeyGenParameterSpec.Builder(KEY_ALIAS, KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
+                mKeyPairGenerator.initialize(new KeyGenParameterSpec.Builder(keyAlias, KeyProperties.PURPOSE_ENCRYPT | KeyProperties.PURPOSE_DECRYPT)
                         .setDigests(KeyProperties.DIGEST_SHA256, KeyProperties.DIGEST_SHA512)
                         .setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_OAEP)
                         .setRandomizedEncryptionRequired(false)
@@ -127,7 +127,7 @@ public class PostMCryptoManager extends CryptoManager {
             mKeyStore.load(null);
 
             if (opmode == Cipher.ENCRYPT_MODE) {
-                PublicKey key = mKeyStore.getCertificate(KEY_ALIAS).getPublicKey();
+                PublicKey key = mKeyStore.getCertificate(keyAlias).getPublicKey();
 
                 PublicKey unrestricted = KeyFactory.getInstance(key.getAlgorithm())
                         .generatePublic(new X509EncodedKeySpec(key.getEncoded()));
@@ -136,7 +136,7 @@ public class PostMCryptoManager extends CryptoManager {
                         SHA_256, MGF_1, MGF1ParameterSpec.SHA1, PSource.PSpecified.DEFAULT);
                 mCipher.init(opmode, unrestricted, spec);
             } else {
-                PrivateKey key = (PrivateKey) mKeyStore.getKey(KEY_ALIAS, null);
+                PrivateKey key = (PrivateKey) mKeyStore.getKey(keyAlias, null);
                 mCipher.init(opmode, key);
             }
 

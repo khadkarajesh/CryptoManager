@@ -98,12 +98,12 @@ public class PreMCryptoManager extends CryptoManager {
     public void createKeyPair() {
         try {
             // Create new key if needed
-            if (!mKeyStore.containsAlias(PostMCryptoManager.KEY_ALIAS)) {
+            if (!mKeyStore.containsAlias(keyAlias)) {
                 Calendar start = Calendar.getInstance();
                 Calendar end = Calendar.getInstance();
                 end.add(Calendar.YEAR, 30);
                 KeyPairGeneratorSpec spec = new KeyPairGeneratorSpec.Builder(mContext)
-                        .setAlias(PostMCryptoManager.KEY_ALIAS)
+                        .setAlias(keyAlias)
                         .setSubject(new X500Principal("CN=Sample Name, O=Leaprfog Technology"))
                         .setSerialNumber(BigInteger.ONE)
                         .setStartDate(start.getTime())
@@ -128,11 +128,11 @@ public class PreMCryptoManager extends CryptoManager {
     public boolean initCipher(int mode) {
         try {
             if (mode == Cipher.ENCRYPT_MODE) {
-                KeyStore.PrivateKeyEntry privateKeyEntry = (KeyStore.PrivateKeyEntry) mKeyStore.getEntry(PostMCryptoManager.KEY_ALIAS, null);
+                KeyStore.PrivateKeyEntry privateKeyEntry = (KeyStore.PrivateKeyEntry) mKeyStore.getEntry(keyAlias, null);
                 RSAPublicKey publicKey = (RSAPublicKey) privateKeyEntry.getCertificate().getPublicKey();
                 mCipher.init(mode, publicKey);
             } else {
-                KeyStore.PrivateKeyEntry privateKeyEntry = (KeyStore.PrivateKeyEntry) mKeyStore.getEntry(PostMCryptoManager.KEY_ALIAS, null);
+                KeyStore.PrivateKeyEntry privateKeyEntry = (KeyStore.PrivateKeyEntry) mKeyStore.getEntry(keyAlias, null);
                 mCipher.init(mode, privateKeyEntry.getPrivateKey());
             }
             return true;
