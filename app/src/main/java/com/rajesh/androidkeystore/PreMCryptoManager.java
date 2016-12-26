@@ -30,6 +30,9 @@ import javax.crypto.CipherOutputStream;
 import javax.crypto.NoSuchPaddingException;
 import javax.security.auth.x500.X500Principal;
 
+/**
+ * Manager which is used to encrypt/decrypt data for API level 18  and less marshmallow
+ */
 public class PreMCryptoManager extends CryptoManager {
     public PreMCryptoManager(Context context) {
         super(context);

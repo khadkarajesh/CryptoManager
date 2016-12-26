@@ -4,6 +4,9 @@ package com.rajesh.androidkeystore;
 import android.content.Context;
 import android.os.Build;
 
+/**
+ * Create instance of CryptoManager {@link CryptoManager} according to android os version
+ */
 public class CryptoFactory {
     public static CryptoManager getInstance(Context context) {
         CryptoManager cryptoManager = null;

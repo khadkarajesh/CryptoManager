@@ -5,6 +5,9 @@ import android.content.Context;
 
 import javax.crypto.Cipher;
 
+/**
+ * It returns the same data as sent. Below api level 18 keystore doesn't support
+ */
 public class DefaultCryptoManager extends CryptoManager {
     public DefaultCryptoManager(Context context) {
         super(context);

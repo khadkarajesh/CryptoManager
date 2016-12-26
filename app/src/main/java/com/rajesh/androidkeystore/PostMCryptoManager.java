@@ -34,6 +34,9 @@ import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.OAEPParameterSpec;
 import javax.crypto.spec.PSource;
 
+/**
+ * Manager which is used to encrypt/decrypt data for  marshmallow and above api level
+ */
 public class PostMCryptoManager extends CryptoManager {
     private KeyPairGenerator mKeyPairGenerator;
 

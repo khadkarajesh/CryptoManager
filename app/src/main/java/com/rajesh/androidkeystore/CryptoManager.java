@@ -20,7 +20,6 @@ public abstract class CryptoManager implements ICryptoManager {
     public static final String MGF_1 = "MGF1";
     public static final String RSA_ECB_OAEPWITH_SHA_256_AND_MGF1_PADDING = "RSA/ECB/OAEPWithSHA-256AndMGF1Padding";
     public static final String ANDROID_KEY_STORE = "AndroidKeyStore";
-    public static final String ANDROID_OPEN_SSL = "AndroidOpenSSL";
     public static final String KEY_ALIAS = "hello";
     public static final String RSA_ECB_PKCS1_PADDING = "RSA/ECB/PKCS1Padding";
 
