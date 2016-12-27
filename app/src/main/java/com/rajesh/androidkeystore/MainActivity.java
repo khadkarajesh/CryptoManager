@@ -14,5 +14,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         CryptoManager cryptoManager = CryptoFactory.getInstance(this);
         Log.d(TAG, "onCreate: decrypt " + cryptoManager.decrypt(cryptoManager.encrypt("hello testing")));
+        //Log.d(TAG, "onCreate: decrypt " + cryptoManager.decrypt(cryptoManager.encrypt("hello testing")));
+        // Log.d(TAG, "onCreate: decrypt " + cryptoManager.decrypt(cryptoManager.encrypt("hello testing")));
+        //Log.d(TAG, "onCreate: decrypt " + cryptoManager.decrypt(cryptoManager.encrypt("hello testing")));
     }
 }
