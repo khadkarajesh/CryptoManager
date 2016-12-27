@@ -6,7 +6,8 @@ Download
 
 ```
 
-## Uses
+How do I use Glide?
+-------------------
 Create key alias in strings.xml
 
 ```
@@ -16,15 +17,32 @@ Create key alias in strings.xml
 ```
 
 ```
-  CryptoManager cryptoManager = CryptoFactory.getInstance(this);
-  cryptoManager.decrypt(cryptoManager.encrypt("hello testing"));
+  public class CryptoApplication extends Application {
+    public static CryptoManager cryptoManager;
+    public static Context context;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        this.context = this;
+    }
+
+    public static CryptoManager getCryptoManager() {
+        return cryptoManager = CryptoFactory.getInstance(context);
+    }
+}
   
 ```
 
+In Activity or Fragment
+```
+CryptoManager cryptoManager = CryptoApplication.getCryptoManager();
+        cryptoManager.decrypt(cryptoManager.encrypt("hello testing"));
+```
+
+
 License
 --------
-
-    Copyright 2013 Square, Inc.
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
