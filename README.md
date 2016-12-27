@@ -2,6 +2,7 @@
 Android Library for encryption and decryption.
 
 Download
+-------------------
 ```groovy
 
 ```
@@ -17,7 +18,8 @@ Create key alias in strings.xml
 ```
 
 ```
-  public class CryptoApplication extends Application {
+
+public class CryptoApplication extends Application {
     public static CryptoManager cryptoManager;
     public static Context context;
 
