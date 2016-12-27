@@ -1,4 +1,4 @@
-package com.rajesh.androidkeystore;
+package com.rajesh.library;
 
 import android.content.Context;
 import android.os.Build;
@@ -109,7 +109,7 @@ public class PreMCryptoManager extends CryptoManager {
                         .setStartDate(start.getTime())
                         .setEndDate(end.getTime())
                         .build();
-                KeyPairGenerator generator = KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, PostMCryptoManager.ANDROID_KEY_STORE);
+                KeyPairGenerator generator = KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, ANDROID_KEY_STORE);
                 generator.initialize(spec);
                 generator.generateKeyPair();
             }
