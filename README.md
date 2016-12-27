@@ -37,7 +37,8 @@ Create key alias in strings.xml
 In Activity or Fragment
 ```
 CryptoManager cryptoManager = CryptoApplication.getCryptoManager();
-        cryptoManager.decrypt(cryptoManager.encrypt("hello testing"));
+cryptoManager.decrypt(cryptoManager.encrypt("hello testing"));
+
 ```
 
 
