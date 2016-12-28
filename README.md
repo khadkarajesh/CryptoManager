@@ -3,7 +3,30 @@ Android Library for encryption and decryption.
 
 Download
 -------------------
-```groovy
+use Gradle:
+
+```gradle
+
+repositories {
+  mavenCentral() // jcenter() works as well because it pulls from Maven Central
+}
+
+dependencies {
+  compile 'com.github.rajeshkumarkhadka:cryptomanager:0.0.1'
+}
+
+```
+
+Or Maven:
+
+```xml
+
+<dependency>
+  <groupId>com.github.rajeshkumarkhadka</groupId>
+  <artifactId>cryptomanager</artifactId>
+  <version>0.0.1</version>
+  <type>aar</type>
+</dependency>
 
 ```
 
