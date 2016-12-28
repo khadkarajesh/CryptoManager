@@ -26,7 +26,7 @@ Or Maven:
 
 ```
 
-How do I use Glide?
+How do I use Cryptomanager?
 -------------------
 Create key alias in strings.xml
 
