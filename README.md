@@ -7,10 +7,6 @@ use Gradle:
 
 ```gradle
 
-repositories {
-  mavenCentral() // jcenter() works as well because it pulls from Maven Central
-}
-
 dependencies {
   compile 'com.github.rajeshkumarkhadka:cryptomanager:0.0.1'
 }
